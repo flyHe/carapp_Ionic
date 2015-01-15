@@ -1,2 +1,2 @@
 # carapp
-a hybird app for vehicle management by the ionic framework
+a hybird app of vehicle management by the ionic framework
