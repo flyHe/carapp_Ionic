@@ -1,0 +1,99 @@
+         
+     <ion-view>
+<ion-nav-bar class="bar-dark">
+     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <h1 class="title">可接任务</h1>
+    </ion-nav-bar>
+   
+ <ion-content class="has-header">
+ 
+ <ion-checkbox ng-model="isChecked" class="item" ng-click="autoReFresh()">自动刷新</ion-checkbox>
+ <!-- <button class="button button-outline icon-right ion-ios-refresh-empty button-balanced" ng-click="doReFresh()">刷新</button>  -->
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doReFresh()">
+      </ion-refresher>
+        <div class="card" ng-repeat="aTask in aTasks">
+        
+        <div class="item item-divider item-balanced">
+           报关号:<span class="positive">{{aTask.custNo}}</span> &nbsp;&nbsp;
+           流水号：<span class="positive">{{aTask.dispatchId}}</span>
+        </div>
+
+        <a class="item item-text-wrap item-icon-right" ng-click=TaskDetail(aTask)>
+                 <div class="row">
+                <div class="col col-center">
+                    <h3>出发地:</h3>
+                    <h4 class="positive">{{aTask.firstTerminal}}</h4>
+                </div>
+
+                <div class="col col-center">
+                    <h3>目的地:</h3>
+                    <h4 class="positive">{{aTask.secondTerminal}}</h4>
+                </div>
+                
+                <div class="col col-center">
+                    <h3>箱型:</h3>
+                    <h4 class="positive">{{aTask.ctnSize}}</h4>
+                </div>
+               <div class="col col-center">
+                    <h3>数量:</h3>
+                    <h4 class="positive">{{aTask.ctnCount}}</h4>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col col-center">
+                    <h3>开始时间:</h3>
+                    <h4 class="positive">{{aTask.beginTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>
+
+                <div class="col col-center">
+                    <h3>结束时间:</h3>
+                    <h4 class="positive">{{aTask.endTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>
+                
+                <div class="col col-center">
+                    <h3>车牌号:</h3>
+                    <h4 class="positive">{{aTask.truckLic}}</h4>
+                </div>
+               <div class="col col-center">
+                    <h3>最晚开始时间:</h3>
+                    <h4 class="positive">{{aTask.latestStartTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>
+                </div>
+                
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+       <!--  <a class="item item-divider item-icon-right" href="#/location/{{aTask.GPS}}">
+           在地图上查看
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </a> -->
+       <div class="item tabs tabs-secondary tabs-icon-left">
+      <a class="tab-item assertive" ng-click="acceptTask(aTask.dispatchId)"> <i
+        class="icon ion-checkmark"></i>接受任务
+      </a> 
+      <a class="tab-item assertive" ng-click="rejectTask(aTask.dispatchId)"> <i
+        class="icon ion-close"></i>拒绝任务
+      </a> 
+      <a class="tab-item calm" href="#/location/{{aTask.GPS}}"> <i
+        class="icon ion-search"></i>地图查看
+      </a> 
+    </div>
+        <!-- <div class="item item-divider item-icon-right">
+           在地图上查看
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </div> -->
+    </div>
+     <ion-infinite-scroll
+            on-infinite="loadMore()"
+            ng-if="moreDataCanBeLoaded"
+            icon="ion-loading-c"
+            distance="1%">
+    </ion-infinite-scroll>
+     <p style="color: lightskyblue;text-align: center" ng-if="!moreDataCanBeLoaded">没有更多的可接任务啦</p>
+     <!-- <button ng-click="LocalNotification()">LocalNotification</button> -->
+   <br>
+  </ion-content>
+</ion-view>
+    
+
+

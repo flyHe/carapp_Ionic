@@ -1,0 +1,77 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-dark">
+     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <header class="bar bar-header bar-dark">
+    <div class="buttons">
+      <button class="button button-clear icon-left ">{{full_nameS}}</button>
+      <h1 class="title">首页</h1>
+      <button class="button button-clear icon-right ">{{truck_licS}}</button>
+      </div>
+    </header>
+    <ion-content class="has-header">
+    <div class="list list-inset">
+        <ion-item nav-clear menu-close ui-sref="userInfo" ui-sref-active="active" class="item item-icon-left item-icon-right">
+                                     我的信息<i class="icon ion-person"></i><i class="icon ion-ios7-arrow-right"></i>
+        </ion-item>
+     <ion-item nav-clear menu-close ui-sref="selectTruck" ui-sref-active="active" class="item item-icon-left item-icon-right">
+                                    选择车辆<i class="icon ion-model-s"></i><i class="icon ion-ios7-arrow-right"></i>
+     </ion-item>
+     </div>
+     <div class="list list-inset">
+      <ion-toggle ng-model="checkedChange"
+                    ng-change="intervalChange()">
+          GPS汇报
+        </ion-toggle>
+        <ion-item nav-clear menu-close ui-sref="app.aTask"  class="item ">
+                                       可接任务
+                                       <span class="badge badge-calm">{{aTaskTotal}}</span>
+        </ion-item>
+        <div class="item  item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-edit placeholder-icon"></i>
+                <input type="search" placeholder="BaseURL" ng-model="BaseURL" required="required">
+            </label>
+            <button ng-click='modifyBaseURL(BaseURL)' class="button button-clear">
+                设置
+            </button>
+        </div>
+      </div>
+     <div class="list list-inset">
+       <button  class="button   button-block   button-assertive" ng-click='logOut()'>
+                                 退出登录
+       </button>
+     </div>
+
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+
+<div class="tabs-striped tabs-background-stable tabs-dark">
+            <div class="tabs tabs-icon-top">
+               <a class="tab-item" ui-sref="app.nTask" ui-sref-active="active"> <!-- ui-sref-active="active" --> 
+                   <i class="icon ion-ios7-paper"></i>
+                                                                                                      当前任务
+               </a>
+               <a class="tab-item" ui-sref="app.aTask" ui-sref-active="active">
+                     <i class="icon ion-star"></i><span class="badge badge-calm" style="position: absolute;right: 50%;">{{aTaskTotal}}</span>
+                                                                                                      可接任务
+               </a>
+               <a class="tab-item" ui-sref="app.hTask" ui-sref-active="active">
+                         <i class="icon ion-checkmark-circled"></i>
+                                                                                                      历史任务
+               </a>
+               <a class="tab-item" ui-sref="app.more" ui-sref-active="active">
+                         <i class="icon ion-plus-circled"></i>
+                                                                                                       更多
+               </a>
+              </div>
+              </div>
+    

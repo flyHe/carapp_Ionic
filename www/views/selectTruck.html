@@ -1,0 +1,28 @@
+<ion-view >
+    <ion-header-bar class=" bar-dark">
+  <button class="button button-clear icon ion-ios7-arrow-back" onclick="javascript:history.go(-1)"></button>
+  <h1 class="title">车辆绑定</h1>
+  <!-- <a class="button button-clear button-positive" href="#/app/nTask">首页</a> -->
+</ion-header-bar>
+<ion-content class="has-header">
+
+<form ng-submit="setTruck(truckLic.value)">
+<div class="list">
+ <ion-radio ng-repeat="truck in trucks"
+                    ng-value="truck.truckLic"
+                    ng-model="truck_licS"
+                    ng-click="setTruck(truck.truckLic)">
+            车牌号:{{truck.truckLic}}
+ </ion-radio>       
+      <div>
+        <!-- <button style="margin: auto" class="button col-90   button-block   button-dark" type="submit">
+                                                            提交
+       </button> -->
+       <p style="color: lightskyblue;text-align: center" ng-if="selected">当前绑定的车辆是{{truck_licS}}</p>
+       <p style="color: lightskyblue;text-align: center" ng-if="!selected">当前未绑定任何车辆</p>
+       <p style="color: lightskyblue;text-align: center" >请选择您希望绑定的车辆</p>
+     </div>
+ </div>
+  </form>
+</ion-content>
+</ion-view>

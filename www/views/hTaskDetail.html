@@ -1,0 +1,30 @@
+
+<div class="modal">
+  <ion-header-bar class="bar bar-dark">
+    <h1 class="title">任务详情</h1>
+    <div class="buttons">
+      <button class="button button-clear button-positive" ng-click="closeTaskDetail()">关闭</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+            <div class="item ">
+             <h2>报关号:<span class="positive">{{hTaskDetail.custNo}}</span></h2>
+             <p>流水号：<span class="positive">{{hTaskDetail.dispatchId}}</span></p>
+            </div>
+            <div class="item item-body">
+            <p><b>出发地:</b> <span class="positive">{{hTaskDetail.firstTerminal}}</span></p>
+            <p><b>目的地:</b> <span class="positive">{{hTaskDetail.secondTerminal}}</span></p>
+            <p><b>开始时间:</b> <span class="positive">{{hTaskDetail.beginTime | date:"yyyy-MM-dd hh:mm:ss" }}</span></p>
+            <p><b>结束时间:</b> <span class="positive">{{hTaskDetail.endTime | date:"yyyy-MM-dd hh:mm:ss" }}</span></p>
+            <p><b>车牌号:</b> <span class="positive">{{hTaskDetail.truckLic}}</span></p>
+            <p><b>箱型:</b> <span class="positive">{{hTaskDetail.ctnSize}}</span></p>
+            <p><b>数量:</b> <span class="positive">{{hTaskDetail.ctnCount }}</span></p>
+            <!-- <p><b>报关号:</b> <span class="positive">{{hTaskDetail.custNo}}</span></p> -->
+            <p><b>driverId:</b> <span class="positive">{{hTaskDetail.driverId}}</span></p>
+            </div>
+    
+
+        </div>
+  </ion-content>
+</div>

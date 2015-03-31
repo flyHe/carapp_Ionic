@@ -1,0 +1,94 @@
+     <ion-view>
+<ion-nav-bar class="bar-dark">
+     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <h1 class="title">历史任务</h1>
+    </ion-nav-bar>
+  <ion-content class="has-header">
+ 
+       <div class="item item-text-wrap item-calm" style="margin:0; padding:0;">
+           <div class="row">
+                <div class="col col-20 col-top">
+                    <h3><b>报关号:</b></h3>
+                </div>
+                <div class="col col-25 col-top">
+                    <h3><b>开始时间:</b></h3>
+                </div>
+                <div class="col col-top">
+                    <h3><b>出发地:</b></h3>
+                </div>
+                <div class="col col-top">
+                    <h3><b>箱型:</b></h3>
+                </div>
+                <div class="col col-25 col-top">
+                    <h3><b>车牌号:</b></h3>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col col-20 col-top">
+                    <h3><b>流水号:</b></h3>
+                </div>
+                <div class="col col-25 col-top">
+                    <h3><b>结束时间:</b></h3>
+                </div>
+                <div class="col col-top">
+                    <h3><b>目的地:</b></h3>
+                </div>
+                <div class="col col-top">
+                    <h3><b>数量:</b></h3>
+                </div>
+               <div class="col col-25 col-top">
+                    <h3><b>最晚开始时间:</b></h3>
+                </div>
+           </div>
+       </div>
+        <div  ng-repeat="hTask in hTasks">
+        <a class="item item-text-wrap" ng-click=TaskDetail(hTask) style="margin:0; padding:0;">
+                   <div class="row">
+                <div class="col col-20 col-top">
+                    <p ><b class="balanced">{{hTask.custNo}}</b></p>
+                </div> 
+                <div class="col col-25 col-top">
+                    <h4><span class="positive">{{hTask.beginTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>  
+                <div class="col col-top">
+                    <p><span class="positive">{{hTask.firstTerminal}}</p>
+                </div>              
+                <div class="col col-top">
+                    <p><span class="positive">{{hTask.ctnSize}}</p>
+                </div>
+                <div class="col col-25 col-top">
+                    <p><span class="positive">{{hTask.truckLic}}</p>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col col-20 col-top">
+                    <p><b class="balanced">{{hTask.dispatchId}}</b></p>
+                </div>
+                <div class="col col-25 col-top">
+                    <h4><span class="positive">{{hTask.endTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>
+                <div class="col col-top">
+                    <p><span class="positive">{{hTask.secondTerminal}}</p>
+                </div>
+                <div class="col col-top">
+                    <p><span class="positive">{{hTask.ctnCount}}</p>
+                </div>
+                <div class="col col-25 col-top">
+                    <h4><span class="positive">{{hTask.latestStartTime | date:"yyyy-MM-dd hh:mm:ss" }}</h4>
+                </div>
+                </div>
+           
+        </a>
+        </div>
+         <ion-infinite-scroll
+            on-infinite="loadMore()"
+            ng-if="moreDataCanBeLoaded"
+            icon="ion-loading-c"
+            distance="1%">
+    </ion-infinite-scroll>
+     <p style="color: lightskyblue;text-align: center" ng-if="!moreDataCanBeLoaded">没有更多的历史任务啦</p>
+     <br><br>
+  </ion-content>
+</ion-view>
+    

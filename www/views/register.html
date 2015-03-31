@@ -1,0 +1,26 @@
+<ion-view title="login">
+<ion-header-bar class="bar-dark">
+    <h1 class="title">请先注册</h1>
+</ion-header-bar>
+<ion-content>
+
+ <form ng-submit="signIn(username, password)">
+<div class="list">
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">用户名</span>
+            <input type="text" placeholder="请填写您的用户名" ng-model="username" required="required">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">密码</span>
+            <input type="password" placeholder="请填写您的密码"  ng-model="password" required="required">
+        </label>
+    
+      <div>
+        <button style="margin: auto" class="button col-90   button-block   button-dark" type="submit">
+                                                            注册
+       </button>
+     </div>
+ </div>
+  </form>
+</ion-content>
+</ion-view>
